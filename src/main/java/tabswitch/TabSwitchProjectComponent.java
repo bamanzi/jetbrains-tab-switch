@@ -36,7 +36,7 @@ import com.intellij.openapi.ui.popup.PopupChooserBuilder;
 import com.intellij.openapi.vfs.VirtualFile;
 import tabswitch.component.Components;
 
-public class TabSwitchProjectComponent extends AbstractProjectComponent implements KeyEventDispatcher {
+public class TabSwitchProjectComponent extends AbstractProjectComponent { // implements KeyEventDispatcher {
 
   private final BitSet modifiers = new BitSet();
   private final JList list;
@@ -71,6 +71,7 @@ public class TabSwitchProjectComponent extends AbstractProjectComponent implemen
     return project.getComponent(TabSwitchProjectComponent.class);
   }
 
+  /*
   @Override
   public boolean dispatchKeyEvent(KeyEvent event) {
     boolean consumed = true;
@@ -107,7 +108,7 @@ public class TabSwitchProjectComponent extends AbstractProjectComponent implemen
       }
     }
     return consumed;
-  }
+  }*/
 
   public void show(KeyEvent event, boolean moveUp, boolean moveOnShow, List<VirtualFile> files) {
     if (cannotShow(files)) return;
@@ -128,7 +129,7 @@ public class TabSwitchProjectComponent extends AbstractProjectComponent implemen
     movingUp = moveUp;
     isTriggeredWithShift = event.isShiftDown();
 
-    KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
+    // KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
 
     popup.showCenteredInCurrentWindow(myProject);
 
@@ -186,7 +187,7 @@ public class TabSwitchProjectComponent extends AbstractProjectComponent implemen
   private void close() {
     disposePopup();
     removeMouseListeners();
-    KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(this);
+    // KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(this);
   }
 
   private void openSelectedFile() {

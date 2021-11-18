@@ -22,6 +22,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.ColoredListCellRenderer;
 import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.components.JBList;
+import com.intellij.ui.ListSpeedSearch;
 import com.intellij.util.IconUtil;
 import tabswitch.TabSwitchProjectComponent;
 
@@ -39,6 +40,7 @@ class ListComponentFactory {
     list.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     list.getSelectionModel().addListSelectionListener(new ListSelectionListenerWithPathUpdaterFactory().create(list, pathLabel));
     list.addMouseListener(new ListMouseListener(list));
+    new ListSpeedSearch(list);
     return list;
   }
 
